@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * This class represents an individual training activity, such as a run, bicycle ride, or swimming session. It stores a title, time, and distance, with support for computing pace per unit distance.
  *
@@ -12,9 +14,10 @@ public abstract class Activity {
     private String title;
     private int timeSec;
     private double distanceKM;
+    private LocalDate date;
 
     /**
-     * Constructs a new activity with the given title and placeholder values for time and distance.
+     * Constructs a new activity with the given title and placeholder values for time, distance, and date (default: today).
      *
      * @param title the activity's title, e.g., "Afternoon Run"
      */
@@ -22,6 +25,7 @@ public abstract class Activity {
         this.title = title;
         this.timeSec = EMPTY_TIME;
         this.distanceKM = EMPTY_DISTANCE;
+        this.date = LocalDate.now();
     }
 
     /**
@@ -30,11 +34,13 @@ public abstract class Activity {
      * @param title the activity's title, e.g., "Afternoon Run"
      * @param timeSec the activity's time, in seconds, e.g., 3000 for a 50-minute run
      * @param distanceKM the activity's distance, in kilometers, e.g., 5.0 for a 5k run
+     * @param date the activity's date, e.g., 07/30/2025
      */
-    public Activity(String title, int timeSec, double distanceKM) {
+    public Activity(String title, int timeSec, double distanceKM, LocalDate date) {
         this(title);
         this.setTimeSec(timeSec);
         this.setDistanceKM(distanceKM);
+        this.setDate(date);
     }
 
     public Activity(String title, int timeSec) {
@@ -79,6 +85,21 @@ public abstract class Activity {
         throw new IllegalArgumentException("Received distance units " + units + ", but only miles and kilometers are supported.");
     }
 
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + ": " +
+                "title='" + title + '\'' +
+                ", timeSec=" + timeSec +
+                ", distanceKM=" + distanceKM +
+                ", date=" + date;
+    }
+
+    /**
+     * Returns the equipment (if any) used as part of this activity.
+     * @return the Equipment object for this activity, or null if none was used
+     */
+    public abstract Equipment getEquipment();
+
     public String getTitle() {
         return title;
     }
@@ -101,5 +122,13 @@ public abstract class Activity {
 
     public void setDistanceKM(double distanceKM) {
         this.distanceKM = distanceKM;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

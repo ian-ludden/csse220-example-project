@@ -22,8 +22,21 @@ public class TrainingTrackerFrame extends JFrame {
         this.add(new JLabel("Placeholder for BannerPanel"), BorderLayout.NORTH);
 
         this.activityList = new ArrayList<>();
+
+        // *****************************************************************************************
         // TODO: Delete these placeholder activities once file I/O has been implemented
-        
+        this.activityList.add(new SwimActivity("Easy 20min Swim"));
+        this.activityList.add(new BikeActivity("90min Evening Ride"));
+        this.activityList.add(new RunActivity("Tempo Run"));
+        // *****************************************************************************************
+
+        StringBuilder activityString = new StringBuilder("Activities:<br>");
+        for (Activity activity : this.activityList) {
+            activityString.append("&nbsp;&nbsp;&nbsp;&nbsp;").append(activity).append("<br>");
+        }
+
+        JLabel bottomLabel = new JLabel("<html>" + activityString + "</html>");
+        this.add(bottomLabel, BorderLayout.SOUTH);
     }
 
 }
