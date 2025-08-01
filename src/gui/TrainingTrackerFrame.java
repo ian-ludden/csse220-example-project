@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,12 +21,34 @@ public class TrainingTrackerFrame extends JFrame {
     private ArrayList<Activity> activityList;
     private JLabel activityListLabel;
 
+    private JTabbedPane tabbedPane;
 
     public TrainingTrackerFrame() {
         super("Endurance Sports Training Tracker");
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
-        this.add(new JLabel("Placeholder for CardLayout with CalendarPanel, ActivityPanel, StatsPanel"), BorderLayout.CENTER);
+//        this.add(new JLabel("Placeholder for CardLayout with CalendarPanel, ActivityPanel, StatsPanel"), BorderLayout.CENTER);
+
+        // Use of JTabbedPane adapted from this example: https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
+        this.tabbedPane = new JTabbedPane();
+        JComponent calendarPanelPlaceholder = new JPanel();
+        calendarPanelPlaceholder.setLayout(new GridLayout(1, 1));
+        JLabel calendarLabel = new JLabel("Placeholder for Calendar");
+        calendarLabel.setHorizontalAlignment(JLabel.CENTER);
+        calendarPanelPlaceholder.add(calendarLabel);
+        this.tabbedPane.addTab("Calendar", null, calendarPanelPlaceholder, "Calendar View");
+        this.tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+
+        JComponent statsPanelPlaceholder = new JPanel();
+        statsPanelPlaceholder.setLayout(new GridLayout(1, 1));
+        JLabel statsLabel = new JLabel("Placeholder for Statistics");
+        statsLabel.setHorizontalAlignment(JLabel.CENTER);
+        statsPanelPlaceholder.add(statsLabel);
+        this.tabbedPane.addTab("Statistics", null, statsPanelPlaceholder, "Stats View");
+        this.tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+
+        this.add(this.tabbedPane, BorderLayout.CENTER);
+
         this.add(new JLabel("Placeholder for BannerPanel"), BorderLayout.NORTH);
 
         this.activityList = new ArrayList<>();
