@@ -11,7 +11,7 @@ public class Bicycle extends Equipment {
 
     private int maintenanceReminderKM;
     private int maintenanceReminderSec;
-    private int remainingKM;
+    private double remainingKM;
     private int remainingSec;
 
     private LocalDate lastServiceDate;
@@ -33,6 +33,13 @@ public class Bicycle extends Equipment {
         this.setMaintenanceReminderSec(maintenanceReminderSec);
         this.setLastServiceDate(lastServiceDate);
         this.resetMaintenanceReminders(LocalDate.now());
+    }
+
+    @Override
+    public void addActivity(Activity newActivity) {
+        super.addActivity(newActivity);
+        this.remainingKM -= newActivity.getDistanceKM();
+        this.remainingSec -= newActivity.getTimeSec();
     }
 
     /**
