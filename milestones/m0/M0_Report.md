@@ -37,9 +37,9 @@ The following milestones were adapted from [this Claude.AI conversation](https:/
   - `ActivityManager` class using `HashMap<LocalDate, ArrayList<Activity>>`
   - Calendar data model with date-based activity retrieval
 2. Swing GUI implementation:
-  - `CardLayout` for switching between Calendar, Activity, and Stats (placeholder for now) panels
-  - `CalendarPanel` class with basic month view grid, automatically set to show the current month, and with buttons for jumping a week/month forward/backward
-  - `ActivityPanel` class with form for selecting activity type and entering details
+  - ~~`CardLayout`~~ `JTabbedPane` for switching between Calendar and Stats (placeholder for now) panels
+  - `CalendarPanel` (JPanel) class with basic month view grid, automatically set to show the current month, and with buttons for jumping a week/month forward/backward
+  - ~~`ActivityPanel`~~ `ActivityDialog` (JDialog) class with form for selecting activity type and entering details
   - Menu bar for navigation, with file load/save, edit to change panel or add/edit/delete activity, and help pop-up
 3. Expanded JUnit tests for `ActivityManager` class
 
