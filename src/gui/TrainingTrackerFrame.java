@@ -18,6 +18,7 @@ public class TrainingTrackerFrame extends JFrame {
     private static final int DEFAULT_HEIGHT = 768;
 
     private ArrayList<Activity> activityList;
+    private JLabel activityListLabel;
 
 
     public TrainingTrackerFrame() {
@@ -37,10 +38,12 @@ public class TrainingTrackerFrame extends JFrame {
 
         BikeActivity ride = new BikeActivity("90min Evening Ride");
         ride.setDate(LocalDate.parse("2025-08-05", DateTimeFormatter.ISO_LOCAL_DATE));
+        ride.setBicycle(new Bicycle("Road Bike"));
         this.activityList.add(ride);
 
         RunActivity run = new RunActivity("Tempo Run");
         run.setDate(LocalDate.parse("2025-08-06", DateTimeFormatter.ISO_LOCAL_DATE));
+        run.setShoePair(new ShoePair("Brooks Ghost 23"));
         this.activityList.add(run);
         // *****************************************************************************************
 
@@ -50,14 +53,9 @@ public class TrainingTrackerFrame extends JFrame {
             System.err.println("Failed to save example activities to CSV.\n" + e.getMessage());
         }
 
-
-        StringBuilder activityString = new StringBuilder("Activities:<br>");
-        for (Activity activity : this.activityList) {
-            activityString.append("&nbsp;&nbsp;&nbsp;&nbsp;").append(activity).append("<br>");
-        }
-
-        JLabel bottomLabel = new JLabel("<html>" + activityString + "</html>");
-        this.add(bottomLabel, BorderLayout.SOUTH);
+        this.activityListLabel = new JLabel();
+        this.updateActivityListLabel();
+        this.add(this.activityListLabel, BorderLayout.SOUTH);
     }
 
     /**
@@ -76,12 +74,22 @@ public class TrainingTrackerFrame extends JFrame {
                 List<Activity> loadedActivities = ActivityCsvUtil.loadFromCSV(filename);
                 this.activityList.clear();
                 this.activityList.addAll(loadedActivities);
+                this.updateActivityListLabel();
+                this.repaint();
             } catch (IOException e) {
                 String warningMessage = "Failed to read Activity file: " + filename + ". Are you sure this file exists?";
                 System.err.println(warningMessage);
                 JOptionPane.showMessageDialog(this, warningMessage, "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    private void updateActivityListLabel() {
+        StringBuilder activityString = new StringBuilder("Activities:<br>");
+        for (Activity activity : this.activityList) {
+            activityString.append("&nbsp;&nbsp;&nbsp;&nbsp;").append(activity).append("<br>");
+        }
+        this.activityListLabel.setText("<html>" + activityString + "</html>");
     }
 
 }

@@ -27,7 +27,7 @@ The following milestones were adapted from [this Claude.AI conversation](https:/
   - Abstract `Equipment` class with concrete subclasses: `ShoePair`, `Bicycle`
 2. File I/O for saving/loading list of activities: 
   - Activity to/from JSON conversion methods
-  - Custom exceptions: `InvalidActivityFormatException`, `FileCorruptedException`
+  - Custom exceptions: `InvalidActivityTypeException`, `CorruptedActivityFileException`
   - Simple file read/write operations with exception handling
 3. JUnit tests for `Activity` and `Equipment` classes
 4. Basic Swing window structure with placeholder panels
