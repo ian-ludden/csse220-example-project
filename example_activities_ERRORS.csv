@@ -1,0 +1,6 @@
+type,title,timeSec,distanceKM,date
+swim,Easy 20min Swim,,,2025-08-01
+bike,90min Evening Ride,,,2025-08-01,extra notes
+run,Tempo Run,,,2025-08-01
+hike,Mt Lecant Hike,10000,40.5,2025-08-03
+

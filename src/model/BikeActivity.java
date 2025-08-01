@@ -33,4 +33,9 @@ public class BikeActivity extends Activity {
     public Equipment getEquipment() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", bicycle=" + this.bicycle;
+    }
 }

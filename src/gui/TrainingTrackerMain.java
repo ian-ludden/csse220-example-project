@@ -15,6 +15,7 @@ public class TrainingTrackerMain {
         this.frame = new TrainingTrackerFrame();
         this.frame.setVisible(true);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.promptLoadActivityFile();
     }
 
     /**
