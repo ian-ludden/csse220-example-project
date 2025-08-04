@@ -107,7 +107,7 @@ We plan to switch from using a `JPanel` for adding/editing activities to using a
 The new `ActivityManager` class, including its `moveActivity`, `addActivity`, `deleteActivity`, `getNumActivities`, and `getActivitiesInRange` methods. 
 - Give examples of 3 different inputs and their expected outputs.
   1. Initially, `getNumActivities` should return `0` (for both `true` and `false`). After calling `addActivity` three times, it should return `3`. 
-  2. If there are 8 activities and only five are completed, then `getNumActivities(false)` should return `10`, and `getNumActivities(true)` should return `5`. 
+  2. If there are 8 activities and only five are completed, then `getNumActivities(false)` should return `8`, and `getNumActivities(true)` should return `5`. 
   3. If there is one activity on August 4, two on Aug 5, and one on Aug 6, then `getActivitiesInRange` with a start date of Aug 4 and end date of Aug 6 should return a list of all four activities. After calling `moveActivity` on the Aug 4 activity to move it to Aug 3, the same call to `getActivitiesInRange` should return only the other three activities. And after calling `moveActivity` on one of the Aug 5 activities to move it to Aug 10, `getActivitiesInRange` with a start date of Aug 8 and end date of Aug 11 should return a list with just that activity. 
 
 ### C. Reflection on Testing Plan

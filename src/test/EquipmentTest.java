@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test cases for the Equipment abstract class and its subclasses.
+ *
+ * @author Ian Ludden (luddenig)
+ */
 public class EquipmentTest {
 
     @Test

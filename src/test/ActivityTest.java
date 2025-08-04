@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test cases for the Activity abstract class and its subclasses.
+ *
+ * @author Ian Ludden (luddenig)
  */
 public class ActivityTest {
 
