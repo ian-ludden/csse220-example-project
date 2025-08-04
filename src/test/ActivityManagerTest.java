@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class ActivityManagerTest {
 
-    private static ActivityManager manager = new ActivityManager();
+    private static ActivityManager manager = ActivityManager.getInstance();
     /**
      * Initial activities to add to manager.
      */
@@ -29,7 +29,8 @@ public class ActivityManagerTest {
     };
 
     public static void loadInitialActivities() {
-        manager = new ActivityManager();
+        manager = ActivityManager.getInstance();
+        manager.clear();
         for (Activity act : INIT_ACTIVITIES) {
             manager.addActivity(act);
         }

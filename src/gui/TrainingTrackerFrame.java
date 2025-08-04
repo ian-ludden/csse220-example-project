@@ -23,6 +23,8 @@ public class TrainingTrackerFrame extends JFrame {
 
     private JTabbedPane tabbedPane;
 
+    private CalendarPanel calendarPanel;
+
     public TrainingTrackerFrame() {
         super("Endurance Sports Training Tracker");
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -31,7 +33,7 @@ public class TrainingTrackerFrame extends JFrame {
 
         // Use of JTabbedPane adapted from this example: https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
         this.tabbedPane = new JTabbedPane();
-        JComponent calendarPanel = new CalendarPanel();
+        this.calendarPanel = new CalendarPanel();
 //        calendarPanel.setLayout(new GridLayout(1, 1));
 //        JLabel calendarLabel = new JLabel("Placeholder for Calendar");
 //        calendarLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -98,6 +100,12 @@ public class TrainingTrackerFrame extends JFrame {
                 this.activityList.clear();
                 this.activityList.addAll(loadedActivities);
                 this.updateActivityListLabel();
+                ActivityManager activityManager = ActivityManager.getInstance();
+                activityManager.clear();
+                for (Activity activity : this.activityList) {
+                    activityManager.addActivity(activity);
+                }
+                this.calendarPanel.refreshActivities();
                 this.repaint();
             } catch (IOException e) {
                 String warningMessage = "Failed to read Activity file: " + filename + ". Are you sure this file exists?";

@@ -22,7 +22,7 @@ public class CalendarPanel extends JPanel {
     private ArrayList<DayPanel> dayPanels;
 
     public CalendarPanel() {
-        this.activityManager = new ActivityManager();
+        this.activityManager = ActivityManager.getInstance();
         this.currentDate = LocalDate.now().minusDays(7);
         this.currentNumWeeks = DEFAULT_NUM_WEEKS;
         this.resetDayPanels();
@@ -35,6 +35,7 @@ public class CalendarPanel extends JPanel {
     private void resetDayPanels() {
         this.dayPanels = new ArrayList<>();
 
+        this.removeAll();
         this.setLayout(new GridLayout(this.currentNumWeeks, 7));
 
         LocalDate current = firstSundayOnOrBefore(currentDate);
@@ -52,6 +53,10 @@ public class CalendarPanel extends JPanel {
         }
 
         this.repaint();
+    }
+
+    public void refreshActivities() {
+        this.resetDayPanels();
     }
 
     /**

@@ -7,15 +7,25 @@ import java.util.HashMap;
  *
  * @author Ian Ludden (luddenig)
  */
-public class ActivityManager {
+public final class ActivityManager {
+
+    private static ActivityManager INSTANCE;
 
     private HashMap<LocalDate, ArrayList<Activity>> dateToActivitiesMap;
 
     /**
      * Constructs a new ActivityManager with an empty map of dates to activities.
      */
-    public ActivityManager() {
+    private ActivityManager() {
         this.dateToActivitiesMap = new HashMap<>();
+    }
+
+    public static ActivityManager getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ActivityManager();
+        }
+
+        return INSTANCE;
     }
 
     /**
@@ -123,4 +133,10 @@ public class ActivityManager {
         return getActivitiesInRange(LocalDate.parse(startDateString), LocalDate.parse(endDateString));
     }
 
+    /**
+     * Removes all activities (and dates) by replacing the date->activities map with a new one.
+     */
+    public void clear() {
+        this.dateToActivitiesMap = new HashMap<>();
+    }
 }
