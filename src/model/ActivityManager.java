@@ -112,4 +112,15 @@ public class ActivityManager {
         return activities;
     }
 
+    /**
+     * Wrapper for {@link ActivityManager#getActivitiesInRange(LocalDate, LocalDate)} that parses date strings.
+     *
+     * @param startDateString the start date, as "YYYY-MM-DD"
+     * @param endDateString the end date, as "YYYY-MM-DD"
+     * @return a list of all activities between startDate and endDate, inclusive
+     */
+    public ArrayList<Activity> getActivitiesInRange(String startDateString, String endDateString) {
+        return getActivitiesInRange(LocalDate.parse(startDateString), LocalDate.parse(endDateString));
+    }
+
 }

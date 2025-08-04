@@ -131,4 +131,8 @@ public abstract class Activity {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public String getShortDescription() {
+        return this.title + " - " + this.timeSec + " sec, " + this.distanceKM + "km";
+    }
 }

@@ -31,12 +31,12 @@ public class TrainingTrackerFrame extends JFrame {
 
         // Use of JTabbedPane adapted from this example: https://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
         this.tabbedPane = new JTabbedPane();
-        JComponent calendarPanelPlaceholder = new JPanel();
-        calendarPanelPlaceholder.setLayout(new GridLayout(1, 1));
-        JLabel calendarLabel = new JLabel("Placeholder for Calendar");
-        calendarLabel.setHorizontalAlignment(JLabel.CENTER);
-        calendarPanelPlaceholder.add(calendarLabel);
-        this.tabbedPane.addTab("Calendar", null, calendarPanelPlaceholder, "Calendar View");
+        JComponent calendarPanel = new CalendarPanel();
+//        calendarPanel.setLayout(new GridLayout(1, 1));
+//        JLabel calendarLabel = new JLabel("Placeholder for Calendar");
+//        calendarLabel.setHorizontalAlignment(JLabel.CENTER);
+//        calendarPanel.add(calendarLabel);
+        this.tabbedPane.addTab("Calendar", null, calendarPanel, "Calendar View");
         this.tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
         JComponent statsPanelPlaceholder = new JPanel();
