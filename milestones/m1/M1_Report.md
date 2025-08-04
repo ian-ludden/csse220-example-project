@@ -103,6 +103,7 @@ We plan to switch from using a `JPanel` for adding/editing activities to using a
 
 ### B. What is your **plan** for testing (writing a unit test(s)) in the next Milestone?
 - What do you plan to test for the next milestone? 
+
 The new `ActivityManager` class, including its `moveActivity`, `addActivity`, `deleteActivity`, `getNumActivities`, and `getActivitiesInRange` methods. 
 - Give examples of 3 different inputs and their expected outputs.
   1. Initially, `getNumActivities` should return `0` (for both `true` and `false`). After calling `addActivity` three times, it should return `3`. 
@@ -111,6 +112,9 @@ The new `ActivityManager` class, including its `moveActivity`, `addActivity`, `d
 
 ### C. Reflection on Testing Plan
 - Did you have to adjust the originally planned test(s) for this Milestone? 
+
 No. 
+
 - Describe how the implementation of the tests in this milestone was either easy or challenging. 
+
 The tests for `Activity` and `Equipment` were easy to implement because most test cases involved constructing an object or two, then calling one or two methods. There was not much need for setup. 
